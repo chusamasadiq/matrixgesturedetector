@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:matrix_gesture_detector/matrix_gesture_detector.dart';
 
 class TransformDemo3 extends StatefulWidget {
+  const TransformDemo3({super.key});
+
   @override
-  _TransformDemo3State createState() => _TransformDemo3State();
+  TransformDemo3State createState() => TransformDemo3State();
 }
 
-class _TransformDemo3State extends State<TransformDemo3> {
+class TransformDemo3State extends State<TransformDemo3> {
   static const Color color0 = Color(0xff00aa00);
   static const Color color1 = Color(0xffeeaa00);
   static const Color color2 = Color(0xffaa0000);
@@ -23,7 +25,7 @@ class _TransformDemo3State extends State<TransformDemo3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TransformDemo Demo 3'),
+        title: const Text('TransformDemo Demo 3'),
       ),
       body: LayoutBuilder(
         builder: (ctx, constraints) {
@@ -52,7 +54,7 @@ class _TransformDemo3State extends State<TransformDemo3> {
               width: double.infinity,
               height: double.infinity,
               alignment: Alignment.topLeft,
-              color: Color(0xff444444),
+              color: const Color(0xff444444),
               child: AnimatedBuilder(
                 animation: notifier,
                 builder: (ctx, child) {

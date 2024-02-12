@@ -11,34 +11,34 @@ List<Demo> demos = [
   Demo(
       'CustomPainter Demo',
       'this demo shows how to use a matrix for a custom canvas drawing',
-      CustomPainterDemo()),
+      const CustomPainterDemo()),
   Demo(
       'Transform Demo',
       'this demo shows how to use a matrix with a standard Transform widget',
-      TransformDemo()),
+      const TransformDemo()),
   Demo(
       'Transform Demo 2',
       'this demo shows how to use a matrix with a standard Transform widget',
-      TransformDemo2()),
+      const TransformDemo2()),
   Demo(
       'Transform Demo 3',
       'this demo shows how to use a matrix with a standard Transform widget',
-      TransformDemo3()),
+      const TransformDemo3()),
   Demo(
       'Transform Demo 4',
       'this demo shows how to use a matrix with a standard Transform widget',
-      TransformDemo4()),
+      const TransformDemo4()),
   Demo(
       'Blur Demo',
       'this demo shows how to use a matrix with drawing custom shapes',
-      BlurDemo()),
+      const BlurDemo()),
 ];
 
 void main() => runApp(MaterialApp(
       title: 'MatrixGestureDetector Demo',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('MatrixGestureDetector Demo'),
+          title: const Text('MatrixGestureDetector Demo'),
         ),
         body: Builder(
           builder: (BuildContext ctx) {
@@ -48,7 +48,7 @@ void main() => runApp(MaterialApp(
                   children: demos
                       .map((demo) => ListTile(
                             onTap: () => showDemo(ctx, demo),
-                            leading: Icon(Icons.image),
+                            leading: const Icon(Icons.image),
                             title: Text(demo.title),
                             subtitle: Text(demo.subtitle),
                           ))
@@ -62,7 +62,6 @@ void main() => runApp(MaterialApp(
     ));
 
 showDemo(BuildContext ctx, Demo demo) {
-  print('showing ${demo.title}...');
   Navigator.of(ctx).push(MaterialPageRoute(builder: (ctx) => demo.widget));
 }
 

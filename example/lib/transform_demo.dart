@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:matrix_gesture_detector/matrix_gesture_detector.dart';
 
 class TransformDemo extends StatelessWidget {
+  const TransformDemo({super.key});
+
   @override
   Widget build(BuildContext context) {
     final ValueNotifier<Matrix4> notifier = ValueNotifier(Matrix4.identity());
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: Text('Transform Demo'),
+        title: const Text('Transform Demo'),
       ),
       body: MatrixGestureDetector(
         onMatrixUpdate: (m, tm, sm, rm) {
@@ -37,9 +39,9 @@ class TransformDemo extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    decoration: FlutterLogoDecoration(),
-                    padding: EdgeInsets.all(32),
-                    alignment: Alignment(0, -0.5),
+                    decoration: const FlutterLogoDecoration(),
+                    padding: const EdgeInsets.all(32),
+                    alignment: const Alignment(0, -0.5),
                     child: Text(
                       'use your two fingers to translate / rotate / scale ...',
                       style: Theme.of(context).textTheme.displayMedium,

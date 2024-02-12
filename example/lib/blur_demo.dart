@@ -6,11 +6,13 @@ import 'package:matrix_gesture_detector/matrix_gesture_detector.dart';
 import 'package:path_drawing/path_drawing.dart';
 
 class BlurDemo extends StatefulWidget {
+  const BlurDemo({super.key});
+
   @override
-  _BlurDemoState createState() => _BlurDemoState();
+  BlurDemoState createState() => BlurDemoState();
 }
 
-class _BlurDemoState extends State<BlurDemo> {
+class BlurDemoState extends State<BlurDemo> {
   ValueNotifier<int> imageLoaded = ValueNotifier(0);
   ValueNotifier<Matrix4>? notifier;
   ImageData? sharp;
@@ -64,7 +66,6 @@ class ImageData {
   }
 
   void imageLoaded(ImageInfo imageInfo, bool synchronousCall) {
-    print('image [$assetName] loaded: $imageInfo');
     image = imageInfo.image;
     size = Size(image!.width.toDouble(), image!.height.toDouble());
     notifier.value++;
@@ -109,8 +110,9 @@ class BlurPainter extends CustomPainter {
       imagePaint.shader = createShader(sharp!.image!, matrix.storage);
       blurredPaint
         ..shader = createShader(blur!.image!, matrix.storage)
-        ..maskFilter = MaskFilter.blur(BlurStyle.normal, 32)
-        ..colorFilter = ColorFilter.mode(Colors.black38, BlendMode.srcOver);
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 32)
+        ..colorFilter =
+            const ColorFilter.mode(Colors.black38, BlendMode.srcOver);
     }
 
     Path transformedPath = path!.transform(notifier!.value.storage);

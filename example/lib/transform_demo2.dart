@@ -3,11 +3,13 @@ import 'package:matrix_gesture_detector/matrix_gesture_detector.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
 class TransformDemo2 extends StatefulWidget {
+  const TransformDemo2({super.key});
+
   @override
-  _TransformDemo2State createState() => _TransformDemo2State();
+  TransformDemo2State createState() => TransformDemo2State();
 }
 
-class _TransformDemo2State extends State<TransformDemo2> {
+class TransformDemo2State extends State<TransformDemo2> {
   Matrix4? matrix;
   late ValueNotifier<Matrix4?> notifier;
   late Boxer boxer;
@@ -23,7 +25,7 @@ class _TransformDemo2State extends State<TransformDemo2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TransformDemo Demo 2'),
+        title: const Text('TransformDemo Demo 2'),
       ),
       body: LayoutBuilder(
         builder: (ctx, constraints) {
@@ -59,7 +61,8 @@ class _TransformDemo2State extends State<TransformDemo2> {
                             color: Colors.black45,
                             width: 20,
                           ),
-                          borderRadius: BorderRadius.all(Radius.circular(40))),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(40))),
                       child: Center(
                         child: Text(
                           'you can move & scale me',
@@ -103,10 +106,11 @@ class Boxer {
 
       vector.Vector3 t = vector.Vector3.zero();
       intersected = Alignment.center.inscribe(fs.destination, intersected);
-      if (dst.width > bounds.width)
+      if (dst.width > bounds.width) {
         t.y = intersected.top;
-      else
+      } else {
         t.x = intersected.left;
+      }
 
       var scale = fs.destination.width / src.width;
       vector.Vector3 s = vector.Vector3(scale, scale, 0);

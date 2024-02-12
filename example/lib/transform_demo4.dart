@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:matrix_gesture_detector/matrix_gesture_detector.dart';
 
 class TransformDemo4 extends StatefulWidget {
+  const TransformDemo4({super.key});
+
   @override
   State<StatefulWidget> createState() => TransformDemo4State();
 }
@@ -41,7 +43,7 @@ class TransformDemo4State extends State<TransformDemo4>
   void initState() {
     super.initState();
     controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+        AnimationController(vsync: this, duration: const Duration(milliseconds: 500));
     focalPointAnimation = makeFocalPointAnimation(focalPoint, focalPoint);
   }
 
@@ -50,7 +52,7 @@ class TransformDemo4State extends State<TransformDemo4>
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: Text('Transform Demo 4'),
+        title: const Text('Transform Demo 4'),
       ),
       body: Column(
         children: makeControls() + makeMainWidget(getBody()),
@@ -60,14 +62,17 @@ class TransformDemo4State extends State<TransformDemo4>
 
   Body getBody() {
     String lbl = 'use your fingers to ';
-    if (shouldRotate! && shouldScale!)
-      return Body(lbl + 'rotate / scale', Icons.crop_rotate, Color(0x6600aa00));
-    if (shouldRotate!)
-      return Body(lbl + 'rotate', Icons.crop_rotate, Color(0x6600aa00));
-    if (shouldScale!)
-      return Body(lbl + 'scale', Icons.transform, Color(0x660000aa));
+    if (shouldRotate! && shouldScale!) {
+      return Body('${lbl}rotate / scale', Icons.crop_rotate, const Color(0x6600aa00));
+    }
+    if (shouldRotate!) {
+      return Body('${lbl}rotate', Icons.crop_rotate, const Color(0x6600aa00));
+    }
+    if (shouldScale!) {
+      return Body('${lbl}scale', Icons.transform, const Color(0x660000aa));
+    }
     return Body('you have to select at least one checkbox above', Icons.warning,
-        Color(0x66aa0000));
+        const Color(0x66aa0000));
   }
 
   Animation<Alignment> makeFocalPointAnimation(
@@ -77,7 +82,7 @@ class TransformDemo4State extends State<TransformDemo4>
 
   List<Widget> makeControls() => [
         ListTile(
-          title: Text('focal point'),
+          title: const Text('focal point'),
           trailing: DropdownButton(
             onChanged: (dynamic value) {
               setState(() {
@@ -98,7 +103,7 @@ class TransformDemo4State extends State<TransformDemo4>
               shouldScale = value;
             });
           },
-          title: Text('scale'),
+          title: const Text('scale'),
         ),
         CheckboxListTile(
           value: shouldRotate,
@@ -107,7 +112,7 @@ class TransformDemo4State extends State<TransformDemo4>
               shouldRotate = value;
             });
           },
-          title: Text('rotate'),
+          title: const Text('rotate'),
         ),
       ];
 
@@ -140,18 +145,18 @@ class TransformDemo4State extends State<TransformDemo4>
     return Transform(
       transform: notifier.value,
       child: GridPaper(
-        color: Color(0xaa0000ff),
+        color: const Color(0xaa0000ff),
         child: Container(
           decoration: BoxDecoration(
-            border: Border.all(width: 4.0, color: Color(0xaa00cc00)),
-            borderRadius: BorderRadius.all(Radius.circular(32.0)),
+            border: Border.all(width: 4.0, color: const Color(0xaa00cc00)),
+            borderRadius: const BorderRadius.all(Radius.circular(32.0)),
           ),
           child: AnimatedSwitcher(
-            duration: Duration(milliseconds: 400),
+            duration: const Duration(milliseconds: 400),
             transitionBuilder: (child, animation) => ScaleTransition(
               scale: animation,
-              child: child,
               alignment: focalPoint!,
+              child: child,
             ),
             switchInCurve: Curves.ease,
             switchOutCurve: Curves.ease,
@@ -166,7 +171,7 @@ class TransformDemo4State extends State<TransformDemo4>
                   ),
                 ),
                 Container(
-                  alignment: Alignment(0, -0.5),
+                  alignment: const Alignment(0, -0.5),
                   child: Text(
                     body.label,
                     style: Theme.of(context).textTheme.displayMedium,
